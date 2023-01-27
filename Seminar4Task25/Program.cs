@@ -2,10 +2,17 @@
 // натуральную степень B.
 
 //Метод читает данные от пользователя
-int ReadData(string msg)
+double ReadData(string msg)
 {
     Console.WriteLine(msg);
-    return int.Parse(Console.ReadLine() ?? "0");
+    return double.Parse(Console.ReadLine() ?? "0");
+}
+
+//Метод читает оператор от пользователя
+char ReadData2(string msg)
+{
+    Console.WriteLine(msg);
+    return char.Parse(Console.ReadLine() ?? "0");
 }
 
 //Выводит результат пользователю
@@ -15,9 +22,9 @@ void PrintData(string msg)
 }
 
 //Метод возводит первое число в степень второго
-int Pow(int num1, int num2)
+double Pow(double num1, double num2)
 {
-    int result = 1;
+    double result = 1;
     while(num2>0)
     {
         result = result*num1;
@@ -27,11 +34,37 @@ int Pow(int num1, int num2)
 }
 
 //Вводим 2 числа
-int num1 = ReadData("Введите первое число: ");
-int num2 = ReadData("Введите второе число: ");
+double num1 = ReadData("Введите первое число: ");
+char operate = ReadData2("Введите знак математической операции: ");
+double num2 = ReadData("Введите второе число: ");
+double result=0;
 
-//Возводим первое число в степень второго
-int result = Pow(num1, num2);
+//Выполняем оперцию в зависимости от того, какой знак 
+if(operate == '^')
+{
+    //Возводим первое число в степень второго
+    result = Pow(num1, num2);
+}
+if(operate == '-')
+{
+    //Вычитаем первое число из второго
+    result = num1 - num2;
+}
+if(operate == '+')
+{
+    //Складываем оба числа
+    result = num1 + num2;
+}
+if(operate == '*')
+{
+    //Умножаем числа
+    result = num1 * num2;
+}
+if(operate == '/')
+{
+    //Делим первое число на второе
+    result = num1/num2;
+}
 
 //Выводим результат на экран
-PrintData("Первое число в степени второго числа: " + result);
+PrintData("Результат операции: " + result);
