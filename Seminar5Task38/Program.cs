@@ -47,7 +47,6 @@ double MinMaxDif(double[] arr)
 void PrintData(string msg)
 {
     Console.WriteLine(msg);
-
 }
 
 double[]arr = Gen1DArray(20);
